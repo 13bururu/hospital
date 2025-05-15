@@ -91,6 +91,25 @@ void Hospital::skipDays(int days) {
                 patient.setvday(newVday);
             }
         }
+        if (patient.getstatus() == "outpatient") {
+            int newVday = patient.getvday() - days;
+            if (newVday <= 0) {
+                patient.setstatus("discharged");
+                patient.setvday(0);
+                for (auto& dept : departments) {
+                    for (const auto& deptPatient : dept.getpatients()) {
+                        if (deptPatient.getname1() + " " + deptPatient.getname2() ==
+                            patient.getname1() + " " + patient.getname2()) {
+                            dept.removePatient(patient.getname1() + " " + patient.getname2());
+                            break;
+                        }
+                    }
+                }
+            }
+            else {
+                patient.setvday(newVday);
+            }
+        }
     }
 }
 
