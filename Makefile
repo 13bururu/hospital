@@ -1,5 +1,6 @@
 all: hospital
 hospital:
-	g++ sraka/patient.cpp sraka/doctor.cpp sraka/department.cpp sraka/hospital.cpp sraka/menu.cpp sraka/main.cpp -Iinclude -o hospital
+	g++ patient.cpp doctor.cpp department.cpp hospital.cpp menu.cpp main.cpp -o hospital
+
 clean:
 	rm -f hospital
